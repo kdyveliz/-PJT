@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <h3>{{ movie.title }} </h3>
+    <p>{{ movie.release_date }}</p>
+    <div class="movie-genres">
+        <p>장르 : 
+            <span>
+            {% for genre in movie.genres %}
+                {{ genre.name }}{% if not forloop.last %} / {% endif %}
+            {% endfor %}
+            </span>
+        </p>
+    </div>
+    
+    <hr>
+    <img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" class="img-fluid" alt="{{ movie.title }}">
+    <hr>
+    <br>
+    <h5>[개요]</h5>
+    <p>{{ movie.overview }}</p>
+    <br>
+    <hr>
+    <br>
+    <h5>[평점]</h5>
+    <p>{{ movie.vote_average }} / 10 ({{ movie.vote_count }}명)</p>
+    <br>
+    <hr>
+    <br>
+    <a href="https://www.themoviedb.org/movie/{{ movie.id }}" class="btn btn-primary" target="_blank">TMDb에서 더 보기</a>
+{% endblock %}
+

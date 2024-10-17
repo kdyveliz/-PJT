@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Today Movie{% endblock %}</title>
+    {# FontAwesome #} 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    {# Bootstrap #} 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%; /* 페이지 전체 높이를 100%로 설정 */
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; 
+        }
+
+        
+        .d-flex {
+            justify-content: center;
+            gap: 20px; /* 버튼들 사이의 간격 */
+        }
+        
+        .square-button {
+            width: 150px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        /* 푸터 스타일 */
+        footer {
+            background-color: #f8f9fa;
+            text-align: center;
+            margin-top: auto; /* 푸터를 화면 하단으로 고정 */
+        }
+    /* ---------------------------------------------- */
+        .card {
+            overflow: hidden; 
+        }
+        .card-img-top {
+            width: 100%;
+            aspect-ratio: 10 / 14; /* 4:3 비율로 고정 */
+            object-fit: cover; /* 이미지가 카드 안에 꽉 차도록 설정 */
+            object-position: center; /* 이미지가 중앙에 오도록 설정 */
+        }        
+        .card-title {
+            white-space: nowrap; /* 텍스트를 한 줄로 설정 */
+            overflow: hidden; /* 넘치는 텍스트를 숨김 */
+            text-overflow: ellipsis; /* 넘치는 부분에 말줄임표(...) 표시 */
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* 화면 전체 높이에서 수직으로 중앙 정렬 */
+        }
+        
+        .row {
+            display: flex;
+            flex-wrap: wrap; /* 화면 크기에 맞춰 줄바꿈 가능 */
+            justify-content: center; /* 수평 가운데 정렬 */
+            gap: 20px; /* 각 버튼 사이의 간격 */
+        }
+        
+
+        .kibun {
+            padding: 0;
+        }
+
+        .kibuns {
+            display: flex;
+            flex-wrap: nowrap;
+           
+        }
+        
+        .today{
+            justify-content: normal;
+            padding-top : 100px;
+        }
+    </style>
+</head>
+
+<body>
+    {# 네비게이션 바 #}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url "movies:index" %}">My Movie Site</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "movies:index" %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about/">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact/">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 페이지별 콘텐츠 영역 -->
+    <div class="container mt-4">
+        {% block content %}
+        {% endblock %}
+        <footer class="footer bg-light text-center py-3 mt-4">
+                <span class="text-muted">&copy; 2024 Doyeon's Movie Site</span>
+        </footer>
+    </div>
+
+    {#푸터#}
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+

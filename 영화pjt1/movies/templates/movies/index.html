@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container text-center today" style="max-width: 600px; margin-top: 50px;">
+    <h4>오늘의 기분은?</h4>
+    <div class="row kibuns mb-3">
+            <a href="{% url 'movies:recommend' 'happy' %}" class="btn btn-secondary btn-lg square-button d-flex flex-column justify-content-center align-items-center">
+                <i class="fa-regular fa-face-smile fa-2x"></i>
+                <br>행복
+            </a>
+            <a href="{% url 'movies:recommend' 'sad' %}" class="btn btn-secondary btn-lg square-button d-flex flex-column justify-content-center align-items-center">
+                <i class="fa-regular fa-face-sad-tear fa-2x"></i>
+                <br>슬픔
+            </a>
+    </div>
+    <div class="row kibuns">
+            <a href="{% url 'movies:recommend' 'interested' %}" class="btn btn-secondary btn-lg square-button d-flex flex-column justify-content-center align-items-center">
+                <i class="fa-solid fa-gift fa-2x"></i>
+                <br>신나는
+            </a>
+            <a href="{% url 'movies:recommend' 'calm' %}" class="btn btn-secondary btn-lg square-button d-flex flex-column justify-content-center align-items-center">
+                <i class="fa-solid fa-mug-saucer fa-2x"></i>
+                <br>차분한
+            </a>
+    </div>
+</div>
+{% endblock %}
